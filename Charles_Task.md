@@ -1,6 +1,11 @@
 
 ## Задание с использованием Postman и Charles proxy
 
+<br> <a href="https://github.com/Evergaarden/charles_proxy/blob/main/Charles_breakpoint%26rewrite_settings.xml">Charles_breakpoint&rewrite_settings.xml</a> - настройки  
+<br> <a href="https://github.com/Evergaarden/charles_proxy/blob/main/Charles_session_with_breakpoints%26rewrite.chls">Charles_session_with_breakpoints&rewrite.chls</a> - сохраненная сессия с запросами
+
+<br> **Список задач:**
+
 #### `Ex_0:` Сфокусироваться на ниже перечисленных запросах
 
 Protocol: http
