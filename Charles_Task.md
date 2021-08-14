@@ -1,80 +1,89 @@
 
 ## Задание с использованием Postman и Charles proxy
 
-
-Ex_0: Сфокусироваться на ниже перечисленных запросах
+#### `Ex_0:` Сфокусироваться на ниже перечисленных запросах
 
 Protocol: http
 IP: 162.55.220.72
 Port: 5005
 
-Ex_1: 
-Method: GET
-EndPoint: /get_method
-request url params: 
- name: str
- age: int
 
-response: 
-[
-    “Str”,
-    “Str”
-]
 
-Task:
-Подменить url в Charles чтобы в запросе ушло имя которые вы вписали в Postman, а вернулось то, которое вы подставили в Charles.
+#### `Ex_1:` Подменить url в Charles чтобы в запросе ушло имя которые вы вписали в Postman, а вернулось то, которое вы подставили в Charles
 
-==================
+<br> **Request:**
+ <br> Method: GET
+ <br> EndPoint: /get_method
+ <br> Request url params: 
+ 
+ ```
+ ?name=str&age=int
+ ```
 
-Ex_2:
-Method: POST
-EndPoint: /user_info_3
-request form data: 
- name: str
- age: int
- salary: int
+<br>**Response:**
+<br>Array
+```
+["str", "str"]
+```
 
-response: 
-{'name': name,
-          'age': age,
-          'salary': salary,
-          'family': {'children': [['Alex', 24], ['Kate', 12]],
-                     'u_salary_1_5_year': salary * 4}}
 
-Task:
-Подменить body в Charles так чтобы в запросе ушла salary которую вы вписали в Postman, а в u_salary_1_5_year цифра вернулась меньше оригинальной из запроса.
 
-==================
+#### `Ex_2:` Подменить body в Charles так чтобы в запросе ушла salary которую вы вписали в Postman, а в u_salary_1_5_year цифра вернулась меньше оригинальной из запроса
 
-Ex_3:
-Method: GET
-EndPoint: /object_info_1
-request url params: 
- name: str
- age: int
- weight: int
+<br>**Request:**
+<br>Method: POST
+<br>EndPoint: /user_info_3
+<br>Request form data: 
 
-response: 
-{'name': name,
-          'age': age,
-          'daily_food': weight * 0.012,
-          'daily_sleep': weight * 2.5}
+    name: str
+    age: int
+    salary: int
 
-Task:
-Подменить параметры запроса в Charles так, чтобы в Postman пришел ответ где другое name, daily_food > weight из запроса, а daily_sleep < weight из запроса.
+**Response:** 
+<br>JSON
 
-==================
+          {"name": "name",
+          "age": age,
+          "salary": salary,
+          "family": {"children": [["Alex", 24], ["Kate", 12]],
+          "u_salary_1_5_year": salary * 4}}
+          
 
-Ex_4:
-Method: GET
-EndPoint: /object_info_3
-request url params: 
- name: str
- age: int
- salary: int
 
-response: 
-{'name': name,
+#### `Ex_3:` Подменить параметры запроса в Charles так, чтобы в Postman пришел ответ где другое name, daily_food > weight из запроса, а daily_sleep < weight из запроса
+
+<br>**Request:**
+<br>Method: GET
+<br>EndPoint: /object_info_1
+<br>Request url params: 
+ 
+    ?name=str&age=int&weight=int
+
+**Response:** 
+<br>JSON
+
+          {"name": "name",
+          "age": age,
+          "daily_food": weight * 0.012,
+          "daily_sleep": weight * 2.5}
+
+
+
+#### `Ex_4:` Сделать через Charles так, чтобы сервер вернул 500 ошибку
+
+<br>**Request:**
+<br>Method: GET
+<br>EndPoint: /object_info_3
+<br>Request url params: 
+ 
+    name: str
+    age: int
+    salary: int
+
+**Response:**
+<br>JSON
+
+         {'name': name,
           'age': age,
           'salary': salary,
           'family': {'children': [['Alex', 24], ['Kate', 12]],
@@ -85,49 +94,49 @@ response:
                      'u_salary_1_5_year': salary * 4}
           }
 
-Task:
-Сделать через Charles так, чтобы сервер вернул 500 ошибку.
 
-==================
 
-Ex_5:
-Method: GET
-EndPoint: /object_info_4
-request url params: 
- name: str
- age: int
- salary: int
+#### `Ex_5:` Сделать через Charles так, чтобы сервер вернул 405 ошибку
 
-response: 
-{'name': name,
+<br>**Request:**
+<br>Method: GET
+<br>EndPoint: /object_info_4
+<br>Request url params: 
+
+    name: str
+    age: int
+    salary: int
+
+**Response:**
+<br>JSON
+
+          {'name': name,
           'age': int(age),
           'salary': [salary, str(salary * 2), str(salary * 3)]}
 
 
-Task:
-Сделать через Charles так, чтобы сервер вернул 405 ошибку.
 
-==================
+#### `Ex_6:` Сделать через Charles так, чтобы в Postman вернулся ответ, в котором qa_salary_after_1.5_year переименовано в qa_salary_after_1.5_month
 
-Ex_6:
-Method: POST
-EndPoint: /user_info_2
-request form data: 
- name: str
- age: int
- salary: int
+**Request:**
+<br>Method: POST
+<br>EndPoint: /user_info_2
+<br>Request form data: 
 
-response: 
-{'start_qa_salary': salary,
+    name: str
+    age: int
+    salary: int
+
+**Response:**
+<br>JSON
+
+          {'start_qa_salary': salary,
           'qa_salary_after_6_months': salary * 2,
           'qa_salary_after_12_months': salary * 2.7,
           'qa_salary_after_1.5_year': salary * 3.3,
           'qa_salary_after_3.5_years': salary * 3.8,
           'person': {'u_name': [user_name, salary, age],
                      'u_age': age,
-                     'u_salary_5_years': salary * 4.2}
-          }
+                     'u_salary_5_years': salary * 4.2}}
 
 
-Task:
-Сделать через Charles так, чтобы в Postman вернулся ответ, в котором qa_salary_after_1.5_year переименовано в qa_salary_after_1.5_month
